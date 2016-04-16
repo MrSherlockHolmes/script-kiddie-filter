@@ -15,6 +15,7 @@ function init() {
       if (focusPosts[i].children[0].children[2].getElementsByTagName("a").textContent.toLowerCase().indexOf("tutorial") > -1) {
         // ouch that is ugly
         focusPosts[i].children[0].children[2].children[0].style.color = "#bd1e24";
+        focusPosts[i].children[0].children[2].children[0].style.backgroundImage: "url(\"\")";
       }
     }
   }
