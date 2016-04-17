@@ -1,6 +1,7 @@
 /*
 
 Author(s): MrSherlockHolmes, iamunknown2
+Note: Short, but seemingly a little... risky - plus one error.
 
 
 */
