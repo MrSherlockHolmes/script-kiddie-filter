@@ -1,24 +1,22 @@
 /*
 
-Author(s): MrSherlockHolmes
+Author(s): MrSherlockHolmes, iamunknown2
 
-Note: My code is hideous. Please fix it.
 
 */
 
-function init() {
-  var focusPosts = document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-  for (i = 0; i < focusPosts.length; i++) {
-    var type = focusPosts[i].children[0].children[1].class;
-    if (type !== "isticky" || type !== "iclosed") {
-      // stickies and closed posts are supposedly not to be worried about...
-      if (focusPosts[i].children[0].children[2].getElementsByTagName("a").textContent.toLowerCase().indexOf("tutorial") > -1) {
-        // ouch that is ugly
-        focusPosts[i].children[0].children[2].children[0].style.color = "#bd1e24";
-        // focusPosts[i].children[0].children[2].children[0].style.backgroundImage: "url(\"\")";
-      }
+var links = document.getElementsByTagName("a");
+var blocklist = ["tutorial"];
+var block = false;
+for (var i in links) {
+    var notsticky = links[i].parentNode.parentNode.innerHTML.indexOf("Sticky:") === -1;
+    if (notsticky && links[i].href.indexOf("/discuss/topic/") > -1 && links[i].style.color !== "#888") {
+        for (var x = 0; x < blocklist.length; x++) {
+            block = block || links[i].innerHTML.toLowerCase().indexOf(blocklist[x]) > -1;
+        }
+        if (block) {
+            links[i].style.color = "#bd1e24";
+            block = false;
+        }
     }
-  }
 }
-
-init();
